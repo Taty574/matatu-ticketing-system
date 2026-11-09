@@ -218,3 +218,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Q5 generated SQLite database
+Q5/code/bookings.db

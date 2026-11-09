@@ -29,3 +29,13 @@ Date accessed: 9 November 2026
 
 Note: the 1037 timeout is described as about 60 seconds in one guide. 
 Daraja does not retry failed callbacks, so we need the Transaction Status Query as a fallback.
+
+## Person A: Booking and Seats – Monday
+
+### A1: Double-booking race condition
+
+The double-booking problem occurs because the program checks whether a seat is available and inserts the booking in two separate operations. When two passengers attempt to book the same seat simultaneously, both threads can check the database before either booking is inserted, so both believe the seat is available. This race condition allows both bookings to succeed, resulting in two passengers being assigned the same seat on the same trip.
+
+**Evidence:** `Q5/screenshots/A1-double-booking.png`
+
+**Test result:** Both passengers successfully booked seat 14 on trip 1, resulting in two booking records.
